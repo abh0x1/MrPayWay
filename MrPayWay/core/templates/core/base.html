@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} My Website {% endblock %}</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-950 p-4">
+        <ul class="flex justify-between items-center">
+            <!-- Mr. PayWay at the start -->
+            <li class="text-white font-bold text-xl">Mr. PayWay</li>
+
+            <!-- Menu items at the end -->
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'index' %}" class="text-white hover:text-gray-300">Home</a></li>
+                <li><a href="{% url 'generate_qr' %}" class="text-white hover:text-gray-300">Generate QR</a></li>
+                <li><a href="{% url 'scan_qr' %}" class="text-white hover:text-gray-300">Scan QR</a></li>
+            </ul>
+        </ul>
+    </nav>
+
+    <h1 class="text-center text-4xl text-shadow-blue-950 mt-5 font-bold "> Mr. PayWay </h1>
+    <p class="font-bold italic text-center mt-2">Mr. PayWay : Your Trusted Corner Store</p>
+
+    <main class="container mx-auto p-6 flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 text-center">
+        <p>&copy; 2025 Mr. PayWay. All rights reserved. ~ Abhishek Verma</p>
+    </footer>
+
+</body>
+</html>

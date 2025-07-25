@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %} Scanner {% endblock title %}
+
+{% block content %}
+<form action="{% url 'scan_qr' %}" method="POST" enctype="multipart/form-data" class="space-y-4 max-w-md mx-auto mt-10">
+    {% csrf_token %}
+
+    <input type="tel" name="mobile" placeholder="Mobile Number" required pattern="[0-9]{10}"
+               class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+    <input type="file" name="file" required
+           class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-300">
+
+    <button type="submit"
+            class="w-full bg-blue-900 text-white py-2 rounded transition-colors duration-[2000ms] hover:bg-green-600">
+        Scan
+    </button>
+</form>
+
+<br>
+
+<div class="text-center">
+
+    {% if error %}
+    <div style="color: red;">{{ error }}</div>
+{% endif %}
+{% if result %}
+    <div style="color: green;">{{ result }}</div>
+{% endif %}
+
+</div>
+
+{% endblock content %}
