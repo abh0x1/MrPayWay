@@ -1,106 +1,131 @@
 
----
+# 🚀 MrPayWay – QR Code Generator & Scanner
 
-# 💸 MrPayWay – QR Code Generator & Scanner
+MrPayWay is a Django-based web application that allows users to generate and scan QR codes using OpenCV and Pillow. Tailwind CSS is used for responsive and modern UI styling.
 
-**MrPayWay** is a Django-based web tool for **generating** and **scanning** QR codes. With a clean Tailwind CSS UI and real-time QR decoding via OpenCV, it's designed for fast, secure, and practical QR workflows.
+## 🌐 Live Preview
 
----
+> Run the project locally and visit:
+- `http://127.0.0.1:8000/scanner/generate/` → QR Code Generator  
+- `http://127.0.0.1:8000/scanner/scan/` → QR Code Scanner  
 
-## 🖼️ Screenshots
+## 📸 Screenshots
 
-| Home Page                     | QR Generator                          | QR Scanner                    |
-| ----------------------------- | ------------------------------------- | ----------------------------- |
-| ![Home](screenshots/home.png) | ![Generate](screenshots/generate.png) | ![Scan](screenshots/scan.png) |
-
-> 📁 Place all screenshots inside a `/screenshots` folder in your project root.
-
----
-
-## 🚀 Features
-
-* ✅ Generate QR codes from any input text (e.g., UPI, contact, URLs)
-* ✅ Scan QR codes using your webcam or uploaded image
-* ✅ Minimal, responsive UI with Tailwind CSS
-* ✅ Secure memory-based image handling (no file writes)
-* ✅ Realtime decoding using OpenCV
+| Home | Generate | Scan |
+|------|----------|------|
+| ![home](screenshots/home.png) | ![generate](screenshots/generate.png) | ![scan](screenshots/scan.png) |
 
 ---
 
-## 🌐 Local Endpoints
+## 🧰 Features
 
-* 🔗 **Generate QR:** `http://127.0.0.1:8000/scanner/generate/`
-* 📸 **Scan QR:** `http://127.0.0.1:8000/scanner/scan/`
+- 🔐 Generate QR codes for any text or URL
+- 📷 Scan uploaded QR code images and display decoded content
+- 🎨 Styled using Tailwind CSS (with custom build)
+- 📁 No external storage: in-memory image handling using `BytesIO`
 
 ---
 
-## 🛠️ Setup & Installation
+## 🛠️ Tech Stack
 
-1. **Clone the Repo**
+- **Backend**: Django, Python
+- **Frontend**: HTML, Tailwind CSS (via CLI)
+- **Libraries**: OpenCV, Pillow
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repo
 
 ```bash
 git clone https://github.com/abh0x1/MrPayWay.git
 cd MrPayWay
+````
+
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv venv
+venv\Scripts\activate  # On Windows
+# source venv/bin/activate  # On Linux/macOS
 ```
 
-2. **Install Python Dependencies**
+### 3. Install Python Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Build Tailwind CSS**
+---
+
+## 🎨 Tailwind CSS Setup
+
+### 1. Install Tailwind via npm (generates `node_modules`)
+
+```bash
+npm install -D tailwindcss
+```
+
+### 2. Start Tailwind CLI in watch mode
 
 ```bash
 npx tailwindcss -i ./src/styles/tailwind.css -o ./static/css/style.css --watch
 ```
 
-> Requires [Node.js](https://nodejs.org/) and `npx`
+> 📝 **Note**: Do not upload `node_modules`. If missing, run the command above to regenerate it.
 
-4. **Run the Django Server**
+---
+
+## 🚀 Run the Project
 
 ```bash
 python manage.py runserver
 ```
 
----
-
-## 🧪 How to Use
-
-* Visit `/scanner/generate/` → input text → generate & download QR code
-* Visit `/scanner/scan/` → use webcam or upload image → extract content
+Then visit: `http://127.0.0.1:8000/scanner/generate/` or `.../scan/` in your browser.
 
 ---
 
-## 📁 Project Overview
+## 🧹 Clear Python Cache (Optional)
+
+To delete Python cache and compiled files:
+
+```powershell
+Get-ChildItem -Path . -Include __pycache__, *.pyc, *.pyo -Recurse -Force | Remove-Item -Recurse -Force
+```
+
+---
+
+## 📂 Project Structure (Important Files Only)
 
 ```
 MrPayWay/
+│
 ├── scanner/
 │   ├── views.py
-│   └── templates/scanner/
-│       ├── generate.html
-│       └── scan.html
-├── static/css/style.css         # Tailwind output
-├── src/styles/tailwind.css      # Tailwind input
+│   ├── urls.py
+│   └── templates/
+│
+├── static/
+│   └── css/
+│       └── style.css  ← Tailwind output
+│
+├── src/styles/
+│   └── tailwind.css   ← Your Tailwind input file
+│
 ├── manage.py
 └── requirements.txt
 ```
 
 ---
 
-## 📦 Built With
-
-* Django
-* Tailwind CSS
-* OpenCV (`cv2`)
-* Pillow
-* qrcode
-
----
-
-## 👨‍💻 Author
+## 🙋‍♂️ Author
 
 **Abhishek Kumar Verma**
 ---
+
+## 📜 License
+
+This project is open-source and available under the [MIT License](LICENSE).
 
